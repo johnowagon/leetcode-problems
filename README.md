@@ -1,4 +1,5 @@
 # leetcode-problems
+Current tracker: 4
 ## Two Sum
 The main idea is that if we have seen the value that is equal to the target minus the current value, we know the solution already. When this equation is true, we know the two answers.
 $$ tar-curValue = previousValueInDict $$
