@@ -1,6 +1,7 @@
 # leetcode-problems
 Current tracker: 4
-<h2 style="color:green">Two Sum</h2>
+
+<h2 style="color: green;"> Two Sum </h2>
 
 The main idea is that if we have seen the value that is equal to the target minus the current value, we know the solution already. When this equation is true, we know the two answers.
 $$ tar-curValue = previousValueInDict $$
