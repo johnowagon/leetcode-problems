@@ -1,5 +1,5 @@
 # leetcode-problems
-Current tracker: 4
+Current tracker: 7
 
 <h2 style="color: green;"> Two Sum </h2>
 
@@ -122,4 +122,20 @@ minPrice and the current profit, only needing one pass through the array resulti
             minPrice = min(minPrice, prices[i])
             curProfit = max(curProfit, prices[i]-minPrice)
         return curProfit
+```
+## Valid Parenthesis
+This one just checks to see if a string of parenthesis is valid or not. This uses a simple stack to keep track of open parenthesis. Once we encounter
+a closed one, we check it with a dictionary to see if its valid.
+```python
+    def isValid(s: str) -> bool:
+            stack = []
+            parens = {'(':')','{':'}','[':']'}
+            if len(s) % 2 != 0:#dont think this is necessary
+                return False
+            for i in s:
+                if i in parens:
+                    stack.append(i)#if i is open
+                elif len(stack) == 0 or i != parens[stack.pop()]:#if it starts with a closed paren, or if mismatched
+                    return False
+            return len(stack) == 0
 ```
