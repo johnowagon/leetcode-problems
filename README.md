@@ -91,3 +91,35 @@ This one was straightforward, my hammed solution iterates through both strings a
         return False
 ```
 To note, we can use one dictionary here instead of two to save on space: if we instead subtract 1 from each value in the dictionary on the second loop, we can then iterate through each value and if one is nonzero we know that it is not a valid anagram. Obviously this trades off time for memory. In my solution, the time complexity is O(n) since we iterate through the input only once.
+## Valid Palindrome
+This one just checks for a valid palindrome, without the non-aplhanumeric characters. The characters can be checked in place in the loop, heres what I got.
+```python
+    def isPalindrome(s: str) -> bool:
+        x = s.lower()
+        start = 0
+        end = len(s)-1
+        while start < end:
+            if not x[start].isalnum():
+                start += 1
+                continue
+            elif not x[end].isalnum():
+                end -= 1
+                continue
+            elif x[start] != x[end]:
+                return False
+            start += 1
+            end -= 1
+        return True#if we have exited out of the loop, the string is a valid palindrome.
+```
+## Best Time to Buy and Sell Stock
+Look through an array and find the max profit if you buy at the lowest price and sell at the highest price. Basically we keep track of both the 
+minPrice and the current profit, only needing one pass through the array resulting in 0(n) time complexity and constant space.
+```python
+    def maxProfit(prices: List[int]) -> int:
+        curProfit = 0
+        minPrice = prices[0]
+        for i in range(1, len(prices)):
+            minPrice = min(minPrice, prices[i])
+            curProfit = max(curProfit, prices[i]-minPrice)
+        return curProfit
+```
