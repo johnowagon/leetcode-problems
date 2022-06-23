@@ -1,5 +1,5 @@
 # leetcode-problems
-Current tracker: 7
+Current tracker: 8
 
 <h2 style="color: green;"> Two Sum </h2>
 
@@ -138,4 +138,14 @@ a closed one, we check it with a dictionary to see if its valid.
                 elif len(stack) == 0 or i != parens[stack.pop()]:#if it starts with a closed paren, or if mismatched
                     return False
             return len(stack) == 0
+```
+## Kth Largest Element in an Array
+Good way of solving this one is to use a heap. We can remove the smallest elements in a min heap, or the largest in a max heap. This implementation uses a min heap, but the values in nums can be inverted (nums*-1) to use a max heap.
+```python
+    def findKthLargest(nums: List[int], k: int) -> int:
+        # Covert to a heap
+        heapq.heapify(nums)
+        for i in range(len(nums) - k):
+            heapq.heappop(nums)
+        return heapq.heappop(nums)
 ```
